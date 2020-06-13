@@ -6,7 +6,7 @@
         <div class="leading-tight text-nord-9">Fullstack Developer</div>
       </div>
       <div class="mt-8 sm:mt-0">
-        <g-image src="../../static/developer.svg" alt="hero" class="w-64 mx-auto sm:mx-0" />
+        <!-- <g-image src="../../static/developer.svg" alt="hero" class="w-64 mx-auto sm:mx-0" /> -->
       </div>
     </div> <!-- end hero -->
 
