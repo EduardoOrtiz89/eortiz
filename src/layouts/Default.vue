@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col min-h-screen font-sans leading-normal content-wrapper bg-background-primary text-copy-primary" :class="theme">
-    <header class="border-t-14 border-nord-8">
+    <header class="border-t-14 border-nord-10">
       <nav class="container flex flex-wrap items-center justify-between py-8 mx-auto">
         <div>
           <g-link class="header"  :class="{'dark': theme !== 'theme-light'}"  to="/"><h1  class="text-2xl font-bold">Eduardo Ortiz</h1></g-link>
@@ -53,7 +53,7 @@
         </div>
         <ul class="flex items-center space-x-8">
           <li>
-            <a href="mailto:eduardo@eortiz.dev" class="text-white hover:text-gray-400">
+            <a :href="'mailto:' + email + 'eortiz.dev'" class="text-white hover:text-gray-400">
               <svg width="25" height="20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 0h20A2.5 2.5 0 0 1 25 2.5v15a2.5 2.5 0 0 1-2.5 2.5h-20A2.5 2.5 0 0 1 0 17.5v-15C0 1.125 1.125 0 2.5 0zm20 4.225V2.5h-20v1.725l10 5 10-5zm0 2.8l-9.438 4.713a1.25 1.25 0 0 1-1.124 0L2.5 7.025V17.5h20V7.025z" fill-rule="nonzero"/></svg>
             </a>
           </li>
@@ -95,11 +95,15 @@ export default {
   },
   mounted() {
     this.theme = localStorage.getItem('theme') || 'theme-light'
+    setTimeout(() => {
+      this.email = 'eduardo@';
+    },3000)
   },
   data() {
     return {
       isOpen: false,
       theme: '',
+      email: ''
     }
   },
   methods: {

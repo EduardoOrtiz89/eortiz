@@ -80,7 +80,7 @@
             <svg width="170px" height="170px"><use xlink:href="#dots-triangle" /></svg>
           </div>
 
-          <p class="mb-12">Send me a email <a :href="'mailto:' + email">@Eduardo Ortiz</a></p>
+          <p class="mb-12">Send me a email <a :href="'mailto:' + email + 'eortiz.dev'">@Eduardo Ortiz</a></p>
 
           <div class="mb-16 text-lg sm:text-lg">
           </div>
@@ -104,7 +104,7 @@ export default {
 
   mounted() {
     setTimeout(() => {
-      this.email = 'eduardo@eortiz.dev'
+      this.email = 'eduardo@'
     }, 3000);
   },
 }
