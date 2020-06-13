@@ -66,6 +66,7 @@ module.exports = {
       },
     },
     fontFamily: {
+      display: ['swap'],
       sans: [
         'Nunito Sans',
         'Roboto',
