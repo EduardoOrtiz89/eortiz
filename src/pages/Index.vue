@@ -81,22 +81,46 @@
     <div class="pt-16 contact-me bg-background-secondary">
       <div class="relative pb-4 mx-auto text-xl container-inner">
         <h2 class="mb-6 font-bold" id="contact">Get it touch</h2>
-        <form name="contact" method="POST" data-netlify="true" class="">
-          <div class="flex flex-col mb-3">
-            <label class="font-bold" for="name">Name</label>
-            <input type="text" id="name" name="name" class="border border-nord-1 rounded-md">
-          </div>
-          <div class="flex flex-col mb-3">
-            <label class="font-bold" for="name">Email</label>
-            <input type="text" id="name" name="name" class="border border-nord-1 rounded-md">
-          </div>
-          <div class="flex flex-col mb-3">
-            <label class="font-bold" for="name">Message</label>
-            <textarea id="message" name="message" class="border border-nord-1 rounded-md"></textarea>
-          </div>
-          <div class="flex justify-center">
-            <button type="submit" class="px-6 py-1 text-white rounded-lg bg-nord-1">Send</button>
-          </div>
+        <form name="contact"
+              v-on:submit.prevent="handleSubmit"
+              action="/success/"
+              method="POST" data-netlify="true" class="" netlify netlify-honeypot="bot-field" >
+              <input type="hidden" name="form-name" value="contact" />
+              <p hidden>
+                <label>
+                  Don’t fill this out: <input name="bot-field" />
+                </label>
+              </p>
+              <div class="flex flex-col mb-3">
+                <label class="mb-1 font-bold" for="name">Name</label>
+                <input
+                  v-model="formData.name"
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="px-3 py-1 border border-gray-300 rounded-md">
+              </div>
+              <div class="flex flex-col mb-3">
+                <label class="mb-1 font-bold" for="name">Email</label>
+                <input
+                  v-model="formData.email"
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="px-3 py-1 border border-gray-300 rounded-md">
+              </div>
+              <div class="flex flex-col mb-3">
+                <label class="mb-1 font-bold" for="name">Message</label>
+                <textarea
+                  v-model="formData.message"
+                  id="message"
+                  name="message"
+                  class="px-3 py-1 border border-gray-300 rounded-md">
+                </textarea>
+              </div>
+              <div class="flex justify-center mb-3">
+                <button type="submit" class="px-6 py-1 text-white rounded-lg bg-nord-1">Send Message</button>
+              </div>
         </form>
 
 
@@ -104,7 +128,7 @@
           <svg width="170px" height="170px"><use xlink:href="#dots-triangle" /></svg>
         </div>
 
-        <p class="mb-12">Email: <a :href="'mailto:' + email + 'eortiz.dev'">{{email + 'eortiz.dev'}}</a></p>
+        <p class="mb-8 text-center"><a :href="'mailto:' + email + 'eortiz.dev'">{{email + 'eortiz.dev'}}</a></p>
 
         <div class="mb-16 text-lg sm:text-lg">
         </div>
@@ -123,6 +147,26 @@ export default {
   data() {
     return {
       email : '',
+      formData: {},
+    }
+  },
+  methods: {
+    encode(data) {
+      return Object.keys(data)
+        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+        .join('&')
+    },
+    handleSubmit(e) {
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: this.encode({
+          'form-name': e.target.getAttribute('name'),
+          ...this.formData,
+        }),
+      })
+        .then(() => this.$router.push('/success'))
+        .catch(error => alert(error))
     }
   },
 
