@@ -66,7 +66,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      display: ['swap'],
+      display: ['League Gothic', 'sans-serif'],
       sans: [
         'Nunito Sans',
         'Roboto',

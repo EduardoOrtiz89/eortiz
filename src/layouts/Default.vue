@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col min-h-screen font-sans leading-normal content-wrapper bg-background-primary text-copy-primary" :class="theme">
-    <header class="border-t-14 border-nord-10">
+    <header>
       <nav class="container flex flex-wrap items-center justify-between py-8 mx-auto">
         <div>
           <g-link class="header"  :class="{'dark': theme !== 'theme-light'}"  to="/"><h1  class="text-2xl font-bold">Eduardo Ortiz</h1></g-link>
