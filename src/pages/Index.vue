@@ -82,9 +82,8 @@
       <div class="relative pb-4 mx-auto text-xl container-inner">
         <h2 class="mb-6 font-bold" id="contact">Get it touch</h2>
         <form name="contact"
-              v-on:submit.prevent="handleSubmit"
-              action="/success/"
-              method="POST" data-netlify="true" class="" >
+ action="https://formspree.io/xoqkpakq"
+ method="POST" >
               <input type="hidden" name="form-name" value="contact" />
               <p hidden>
                 <label>
