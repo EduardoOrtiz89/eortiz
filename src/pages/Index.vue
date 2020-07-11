@@ -159,7 +159,10 @@ export default {
     handleSubmit(e) {
       fetch('https://formspree.io/xoqkpakq', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Access-Control-Allow-Origin':'*'
+        },
         body: this.encode({
           'form-name': e.target.getAttribute('name'),
           ...this.formData,
