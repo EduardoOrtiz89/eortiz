@@ -84,7 +84,7 @@
         <form name="contact"
               v-on:submit.prevent="handleSubmit"
               action="/success/"
-              method="POST" data-netlify="true" class="" netlify netlify-honeypot="bot-field" >
+              method="POST" data-netlify="true" class="" >
               <input type="hidden" name="form-name" value="contact" />
               <p hidden>
                 <label>
@@ -157,7 +157,7 @@ export default {
         .join('&')
     },
     handleSubmit(e) {
-      fetch('/', {
+      fetch('https://formspree.io/xoqkpakq', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: this.encode({
